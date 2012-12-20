@@ -86,6 +86,8 @@ system.indexes
 > 
 ~~~
 
+See the Schema in models/db.js and also mongoDB docs. This is only an example of my own fake data.
+
 * Install needed Node.js modules
 
 ~~~
@@ -103,9 +105,8 @@ $ node app.js
 ~~~
 
 * Results:
-
-** http://localhost:3000/ => the same as vanilla ExpressJS app
-** http://localhost:3000/employees => list of employees (currently in JSON
+	* http://localhost:3000/ => the same as vanilla ExpressJS app
+	* http://localhost:3000/employees => list of employees (currently in JSON
 format)
 
 Author
