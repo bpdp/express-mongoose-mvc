@@ -114,6 +114,12 @@ Author
 
 * Bambang Purnomosidi D. P. [web](http://bpdp.name), [twitter](http://twitter.com/#!/bpdp), [Facebook](http://www.facebook.com/bambangpdp).
 
+History
+-------
+
+See [CHANGELOGS.md](CHANGELOGS.md) for more information.
+
+
 License
 -------
 
