@@ -49,7 +49,7 @@ Apr 28 20:34:28 bpdp-arch mongod[1368]: 2014-04-28T20:34:28.704+0700
 Apr 28 20:34:28 bpdp-arch mongod[1368]: 2014-04-28T20:34:28.704+0700 warning: 32-bit servers don't have journaling enabled by default. Please use --journa...urability.
 Apr 28 20:34:28 bpdp-arch mongod[1368]: 2014-04-28T20:34:28.704+0700
 Hint: Some lines were ellipsized, use -l to show in full.
-[root@bpdp-arch ~]#
+[root@bpdp-arch ~]# cat /etc/mongodb.conf 
 # See http://www.mongodb.org/display/DOCS/File+Based+Configuration for format details
 # Run mongod --help to see a list of options
 
