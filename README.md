@@ -36,19 +36,20 @@ If you use **systemd**:
 ~~~
 [root@bpdp-arch ~]# systemctl start mongodb
 [root@bpdp-arch ~]# systemctl status mongodb
-mongodb.service - High-performance, schema-free document-oriented database
-   Loaded: loaded (/usr/lib/systemd/system/mongodb.service; disabled)
-   Active: active (running) since Fri 2013-05-17 07:27:45 WIT; 4s ago
- Main PID: 1634 (mongod)
-   CGroup: name=systemd:/system/mongodb.service
-           └─1634 /usr/bin/mongod --quiet --config /etc/mongodb.conf
+● mongodb.service - High-performance, schema-free document-oriented database
+	Loaded: loaded (/usr/lib/systemd/system/mongodb.service; disabled)
+	Active: active (running) since Mon 2014-04-28 20:34:27 WIB; 2h 23min ago
+	Main PID: 1368 (mongod)
+	CGroup: /system.slice/mongodb.service
+	        └─1368 /usr/bin/mongod --quiet --config /etc/mongodb.conf
 
-May 17 07:27:45 bpdp-arch systemd[1]: Started High-performance, schema-free document-oriented database.
-May 17 07:27:45 bpdp-arch mongod[1634]: Fri May 17 07:27:45.375
-May 17 07:27:45 bpdp-arch mongod[1634]: Fri May 17 07:27:45.375 warning: 32-bit servers don't have journaling enabled by default. Please use --journal if y...urability.
-May 17 07:27:45 bpdp-arch mongod[1634]: Fri May 17 07:27:45.375
-May 17 07:27:45 bpdp-arch mongod[1634]: all output going to: /var/log/mongodb/mongod.log
-[root@bpdp-arch ~]# cat /etc/mongodb.conf 
+Apr 28 20:34:27 bpdp-arch systemd[1]: Starting High-performance, schema-free document-oriented database...
+Apr 28 20:34:27 bpdp-arch systemd[1]: Started High-performance, schema-free document-oriented database.
+Apr 28 20:34:28 bpdp-arch mongod[1368]: 2014-04-28T20:34:28.704+0700
+Apr 28 20:34:28 bpdp-arch mongod[1368]: 2014-04-28T20:34:28.704+0700 warning: 32-bit servers don't have journaling enabled by default. Please use --journa...urability.
+Apr 28 20:34:28 bpdp-arch mongod[1368]: 2014-04-28T20:34:28.704+0700
+Hint: Some lines were ellipsized, use -l to show in full.
+[root@bpdp-arch ~]#
 # See http://www.mongodb.org/display/DOCS/File+Based+Configuration for format details
 # Run mongod --help to see a list of options
 
@@ -72,7 +73,7 @@ or, if you think you are some kind of super duper creature and prefer to use man
 
 ~~~
 $ mongo
-MongoDB shell version: 2.4.4-pre
+MongoDB shell version: 2.6.0
 connecting to: test
 > db
 test
@@ -127,6 +128,16 @@ system.indexes
 
 See the Schema in models/db.js and also mongoDB docs. This is only an example of my own fake data.
 
+* Install [Gulp](http://gulpjs.com) and gulp-jshint plugin:
+
+~~~
+$ npm install -g gulp
+$ npm install --save-dev gulp
+$ npm install --save-dev gulp-jshint
+~~~
+
+npm argument **--save-dev** is used to put modules into **devDependencies** in **package.json**.
+
 * Install needed Node.js modules
 
 ~~~
@@ -141,6 +152,12 @@ because of this, please adjust your Python installation
 
 ~~~
 $ node app.js
+~~~
+
+or better yet, use Gulp:
+
+~~~
+$ gulp
 ~~~
 
 * Results:

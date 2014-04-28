@@ -1,7 +1,6 @@
-/**
- * Module dependencies.
- */
-
+var gulp = require('gulp');
+var jshint = require('gulp-jshint');
+ 
 var express = require('express')
   , controllers = require('./controllers')
   , employee = require('./controllers/employee')
@@ -15,6 +14,9 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.get('/', controllers.index);
+app.get('/employees', employee.list);
+
 /*
 var env = process.env.NODE_ENV || 'development';
 if ('development' == env) {
@@ -22,9 +24,16 @@ if ('development' == env) {
 }
 */
 
-app.get('/', controllers.index);
-app.get('/employees', employee.list);
+// JS hint task
+gulp.task('jshint', function() {
+  gulp.src('*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
+});
 
-http.createServer(app).listen(app.get('port'), function(){
+gulp.task('default', function() {
+
+	http.createServer(app).listen(app.get('port'))
   console.log("Express server listening on port " + app.get('port'));
+
 });
