@@ -4,8 +4,8 @@
 
 var Employee = require('../models/db.js');
 
-exports.list = function(req, res){
-  Employee.find(function(err, employees) {
+exports.list = (req, res) => {
+  Employee.find((err, employees) => {
     res.send(employees);
   });
 };
