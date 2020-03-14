@@ -3,15 +3,15 @@
  */
 
 const express = require('express');
-const controllers = require('./controllers');
-const employee = require('./controllers/employee');
+const controllers = require('./app/controllers');
+const employee = require('./app/controllers/employee');
 const http = require('http');
 const path = require('path');
 
 const app = express();
 
 app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'app', 'views'));
 app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'public')));
 
