@@ -2,17 +2,17 @@
  * Module dependencies.
  */
 
-var express = require('express')
-  , controllers = require('./controllers')
-  , employee = require('./controllers/employee')
-  , http = require('http')
-  , path = require('path');
+const express = require('express');
+const controllers = require('./app/controllers');
+const employee = require('./app/controllers/employee');
+const http = require('http');
+const path = require('path');
 
-var app = express();
+const app = express();
 
 app.set('port', process.env.PORT || 3000);
-app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
+app.set('views', path.join(__dirname, 'app', 'views'));
+app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'public')));
 
 /*
@@ -25,6 +25,8 @@ if ('development' == env) {
 app.get('/', controllers.index);
 app.get('/employees', employee.list);
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log("Express server listening on port " + app.get('port'));
-});
+http
+  .createServer(app)
+  .listen(app.get('port'), () => {
+      console.log("Express server listening on port " + app.get('port'));
+  });

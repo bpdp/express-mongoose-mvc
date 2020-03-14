@@ -1,17 +1,17 @@
-var gulp = require('gulp');
-var jshint = require('gulp-jshint');
- 
-var express = require('express')
-  , controllers = require('./controllers')
-  , employee = require('./controllers/employee')
-  , http = require('http')
-  , path = require('path');
+const gulp = require('gulp');
+const jshint = require('gulp-jshint');
 
-var app = express();
+const express = require('express');
+const controllers = require('./app/controllers');
+const employee = require('./app/controllers/employee');
+const http = require('http');
+const path = require('path');
+
+const app = express();
 
 app.set('port', process.env.PORT || 3000);
-app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
+app.set('views', path.join(__dirname, 'app', 'views'));
+app.set('view engine', 'pug');
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', controllers.index);
@@ -24,16 +24,23 @@ if ('development' == env) {
 }
 */
 
-// JS hint task
-gulp.task('jshint', function() {
+const taskJSHint = () => {
     gulp.src('*.js')
-        .pipe(jshint())
+        .pipe(jshint({
+          esversion: 6,
+        }))
         .pipe(jshint.reporter('default'));
-});
+};
 
-gulp.task('default', function() {
+// JS hint task
+gulp.task('jshint', taskJSHint);
 
-    http.createServer(app).listen(app.get('port'))
-    console.log("Express server listening on port " + app.get('port'));
+gulp.task('default', () => {
+  taskJSHint();
 
+  http
+    .createServer(app)
+    .listen(app.get('port'));
+
+  console.log("Express server listening on port " + app.get('port'));
 });
