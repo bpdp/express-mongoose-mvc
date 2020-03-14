@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node app",
-    "dev": "nodemon --exec 'gulp'"
+    "dev": "NODE_ENV=development nodemon --exec 'gulp'"
   },
   "dependencies": {
     "express": "^4.17.1",
