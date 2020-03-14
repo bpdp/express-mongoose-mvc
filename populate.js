@@ -1,4 +1,4 @@
-db = connect("localhost:27017/mydb")
+db = connect("localhost:27017/mydb");
 
 emps = [
   {
